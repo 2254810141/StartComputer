@@ -34,3 +34,22 @@
   color: var(--muted);
 }
 
+.shop-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.shop-actions .ghost-btn,
+.shop-actions .primary-btn {
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 520px) {
+  .shop-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

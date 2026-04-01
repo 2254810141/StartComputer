@@ -1,28 +1,6 @@
-﻿import '../../styles/ShopPage.css'
-
-const accessories = [
-  {
-    id: 'acc-logi-mx3s',
-    name: 'Chuột Logitech MX Master 3S',
-    price: 2290000,
-    displayPrice: '2.290.000₫',
-    desc: 'Chuột không dây cao cấp, phù hợp làm việc văn phòng và thiết kế.',
-  },
-  {
-    id: 'acc-key-k8pro',
-    name: 'Bàn phím Keychron K8 Pro',
-    price: 2590000,
-    displayPrice: '2.590.000₫',
-    desc: 'Bàn phím cơ Bluetooth, hot-swap, pin lâu cho coder.',
-  },
-  {
-    id: 'acc-hub-ugreen',
-    name: 'Hub USB-C UGREEN 7 in 1',
-    price: 990000,
-    displayPrice: '990.000₫',
-    desc: 'Mở rộng cổng HDMI, USB, SD card cho laptop mỏng nhẹ.',
-  },
-]
+﻿import { Link } from 'react-router-dom'
+import '../../styles/ShopPage.css'
+import { accessories } from '../../data/catalog'
 
 function AccessoriesPage({ onAddToCart = () => {} }) {
   return (
@@ -41,13 +19,18 @@ function AccessoriesPage({ onAddToCart = () => {} }) {
             <h3>{item.name}</h3>
             <p className="shop-price">{item.displayPrice}</p>
             <p className="muted">{item.desc}</p>
-            <button
-              type="button"
-              className="primary-btn"
-              onClick={() => onAddToCart({ id: item.id, name: item.name, price: item.price })}
-            >
-              Thêm vào giỏ
-            </button>
+            <div className="shop-actions">
+              <Link to={`/accessories/${item.id}`} className="ghost-btn">
+                Xem
+              </Link>
+              <button
+                type="button"
+                className="primary-btn"
+                onClick={() => onAddToCart({ id: item.id, name: item.name, price: item.price })}
+              >
+                Thêm vào giỏ
+              </button>
+            </div>
           </article>
         ))}
       </div>
@@ -56,4 +39,3 @@ function AccessoriesPage({ onAddToCart = () => {} }) {
 }
 
 export default AccessoriesPage
-

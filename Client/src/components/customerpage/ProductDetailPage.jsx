@@ -1,0 +1,68 @@
+﻿import { useParams, Link } from 'react-router-dom'
+import '../../styles/ProductDetail.css'
+import { findLaptopById } from '../../data/catalog'
+
+function ProductDetailPage({ onAddToCart = () => {} }) {
+  const { productId } = useParams()
+  const product = findLaptopById(productId)
+
+  if (!product) {
+    return (
+      <main className="detail-page section">
+        <div className="container detail-card">
+          <p className="muted">Không tìm thấy sản phẩm.</p>
+          <Link to="/products/laptop" className="ghost-btn">
+            Quay lại danh sách Laptop
+          </Link>
+        </div>
+      </main>
+    )
+  }
+
+  return (
+    <main className="detail-page section">
+      <div className="container detail-card">
+        <div className="detail-header">
+          <div>
+            <p className="eyebrow">Laptop nổi bật</p>
+            <h1>{product.name}</h1>
+            <p className="muted">{product.description}</p>
+          </div>
+          <div className="detail-price">{product.displayPrice}</div>
+        </div>
+
+        {product.image && (
+          <div className="detail-media">
+            <img src={product.image} alt={product.name} />
+          </div>
+        )}
+
+        <div className="detail-body">
+          <div>
+            <h3>Thông số chính</h3>
+            <ul className="detail-specs">
+              {product.specs.map((spec) => (
+                <li key={spec}>{spec}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="detail-actions">
+          <Link to="/products/laptop" className="ghost-btn">
+            Quay lại danh sách
+          </Link>
+          <button
+            type="button"
+            className="primary-btn"
+            onClick={() => onAddToCart({ id: product.id, name: product.name, price: product.price })}
+          >
+            Thêm vào giỏ
+          </button>
+        </div>
+      </div>
+    </main>
+  )
+}
+
+export default ProductDetailPage

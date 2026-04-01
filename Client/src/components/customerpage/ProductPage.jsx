@@ -1,28 +1,6 @@
-﻿import '../../styles/ShopPage.css'
-
-const laptopProducts = [
-  {
-    id: 'laptop-rog-g16',
-    name: 'ROG Zephyrus G16 2025',
-    price: 42990000,
-    displayPrice: '42.990.000₫',
-    specs: ['Intel Core Ultra 9', 'RTX 4070 8GB', '32GB DDR5', '1TB NVMe'],
-  },
-  {
-    id: 'laptop-mbp-m4',
-    name: 'MacBook Pro 14" M4',
-    price: 54990000,
-    displayPrice: '54.990.000₫',
-    specs: ['Apple M4 Pro', '14" Liquid Retina XDR', '18GB RAM', '512GB SSD'],
-  },
-  {
-    id: 'laptop-thinkpad-x1',
-    name: 'ThinkPad X1 Carbon Gen 13',
-    price: 36490000,
-    displayPrice: '36.490.000₫',
-    specs: ['Intel Core Ultra 7', '16GB LPDDR5X', '1TB SSD', 'Trọng lượng 1.1kg'],
-  },
-]
+﻿import { Link } from 'react-router-dom'
+import '../../styles/ShopPage.css'
+import { laptopProducts } from '../../data/catalog'
 
 function ProductPage({ onAddToCart = () => {} }) {
   return (
@@ -45,13 +23,18 @@ function ProductPage({ onAddToCart = () => {} }) {
                 <li key={spec}>{spec}</li>
               ))}
             </ul>
-            <button
-              type="button"
-              className="primary-btn"
-              onClick={() => onAddToCart({ id: item.id, name: item.name, price: item.price })}
-            >
-              Thêm vào giỏ
-            </button>
+            <div className="shop-actions">
+              <Link to={`/products/${item.id}`} className="ghost-btn">
+                Xem
+              </Link>
+              <button
+                type="button"
+                className="primary-btn"
+                onClick={() => onAddToCart({ id: item.id, name: item.name, price: item.price })}
+              >
+                Thêm vào giỏ
+              </button>
+            </div>
           </article>
         ))}
       </div>
@@ -60,4 +43,3 @@ function ProductPage({ onAddToCart = () => {} }) {
 }
 
 export default ProductPage
-
