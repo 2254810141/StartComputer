@@ -153,6 +153,13 @@
   flex-wrap: wrap;
 }
 
+.product-card__footer .ghost-btn,
+.product-card__footer .primary-btn {
+  flex: 1;
+  min-width: 140px;
+  text-align: center;
+}
+
 .pill {
   display: inline-flex;
   padding: 6px 12px;
@@ -256,5 +263,3 @@
     justify-content: center;
   }
 }
-
-

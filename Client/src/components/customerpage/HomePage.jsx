@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import '../../styles/HomePage.css'
 const featured = [
   {
+    id: 'laptop-rog-g16',
     name: 'ROG Zephyrus G16 2025',
     price: '42.990.000₫',
     desc: 'Hiệu năng flagship cho gaming và sáng tạo nội dung 4K.',
@@ -10,6 +11,7 @@ const featured = [
     badge: 'Hàng sẵn kho',
   },
   {
+    id: 'laptop-mbp-m4',
     name: 'MacBook Pro 14" M4',
     price: '54.990.000₫',
     desc: 'Màn mini‑LED, pin 18 giờ, tối ưu cho lập trình và đồ họa.',
@@ -17,6 +19,7 @@ const featured = [
     badge: 'Trả góp 0%',
   },
   {
+    id: 'laptop-thinkpad-x1',
     name: 'Lenovo ThinkPad X1 Carbon',
     price: '36.490.000₫',
     desc: 'Siêu nhẹ 1.1kg, bàn phím huyền thoại, bảo mật vPro.',
@@ -103,6 +106,9 @@ function HomePage() {
                 ))}
               </ul>
               <div className="product-card__footer">
+                <Link to={`/products/${item.id}`} className="ghost-btn">
+                  Xem
+                </Link>
                 <button type="button" className="primary-btn">
                   Thêm vào giỏ
                 </button>
@@ -142,4 +148,3 @@ function HomePage() {
 }
 
 export default HomePage
-

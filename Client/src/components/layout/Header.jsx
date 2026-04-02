@@ -42,10 +42,15 @@ function Header() {
             placeholder="Bạn muốn mua gì hôm nay..."
             aria-label="Tìm kiếm sản phẩm"
           />
+
           <Link to="/cart" className="cart-btn" onClick={closeMenu}>
             Giỏ hàng
           </Link>
-          <button className="ghost-btn" type="button">Đăng nhập</button>
+
+          <Link to="/login" className="ghost-btn" onClick={closeMenu}>
+            Đăng nhập
+          </Link>
+
           <button className="menu-toggle" type="button" onClick={toggleMenu} aria-label="Mở menu">
             <span />
             <span />
@@ -58,4 +63,3 @@ function Header() {
 }
 
 export default Header
-
